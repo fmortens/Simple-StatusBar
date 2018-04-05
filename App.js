@@ -15,7 +15,8 @@ export default class App extends React.Component {
 
     this.state = {
       statusBarStyle: 'dark-content',
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
+      textColor: 'black'
     };
 
     this.randomizeBackgroundColor = this.randomizeBackgroundColor.bind(this);
@@ -27,8 +28,8 @@ export default class App extends React.Component {
         <StatusBar
           barStyle={this.state.statusBarStyle}
         />
-        <Text>Press button to randomize background color</Text>
-        <Button title="Click me" onPress={this.randomizeBackgroundColor} />
+        <Text style={{color: this.state.textColor}}>Press button to randomize background color</Text>
+        <Button color={this.state.textColor} title="Click me" onPress={this.randomizeBackgroundColor} />
       </View>
     );
   }
@@ -42,6 +43,7 @@ export default class App extends React.Component {
 
     this.setState({
       backgroundColor : `#${newColor.toHex()}`,
+      textColor : newColor.isDark() ? 'white' : 'black',
       statusBarStyle: newColor.isDark() ? 'dark-content' : 'light-content'
     });
   }

@@ -40,11 +40,12 @@ export default class App extends React.Component {
     const b = Math.floor(Math.random() * Math.floor(256));
 
     const newColor = tinyColor({r, g, b});
+    const isDark = newColor.isDark();
 
     this.setState({
       backgroundColor : `#${newColor.toHex()}`,
-      textColor : newColor.isDark() ? 'white' : 'black',
-      statusBarStyle: newColor.isDark() ? 'dark-content' : 'light-content'
+      textColor : isDark ? 'white' : 'black',
+      statusBarStyle: isDark ? 'light-content' : 'dark-content'
     });
   }
 }
